@@ -8,7 +8,6 @@ import ModalBody from 'reactstrap/lib/ModalBody';
 import ModalHeader from 'reactstrap/lib/ModalHeader';
 import Label from 'reactstrap/lib/Label';
 
-
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
