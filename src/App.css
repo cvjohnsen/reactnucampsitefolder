@@ -54,14 +54,17 @@ h2 {
 .page-enter-active {
     opacity: 1;
     transform: translateX(0%);
-    transition: 300ms ease-out;
+    /* transition: 300ms ease-out; */
+    transition: 500ms ease-in-out;
 }
 
 .page-exit {
     opacity: 1;
+    transform: translateX(100%);
 }
 
 .page-exit-active {
     opacity: 0;
-    transition: 300ms ease-in;
+    /* transition: 300ms ease-in; */
+    transition: 500ms ease-in-out;
 }
