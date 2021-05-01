@@ -3,8 +3,8 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
-import { Fade, Stagger } from 'react-animation-components';
-
+// import Fade from 'reactstrap/lib/Fade';
+import {Fade, Stagger } from 'react-animation-components';
 
 function About(props) {
 
@@ -25,14 +25,17 @@ function RenderPartner({ partner }) {
     );
     }
 
-function PartnerList(props) {
-    const partners = props.partners.partners.map(partner => {
-        return (
-                <Media tag="li" >
-                    <RenderPartner partner={partner} />
-                </Media> 
-        );
-    });
+    function PartnerList(props) {
+        const partners = props.partners.partners.map(partner => {
+
+            return (
+                <Fade in key={partner.id}>
+                    <Media tag="li" >
+                        <RenderPartner partner={partner} />
+                    </Media>
+                </Fade>
+            );
+        });
 
     if (props.partners.isLoading) {
         return (
@@ -46,14 +49,14 @@ function PartnerList(props) {
             </div>
         );
     }
-    return (
-        <div className="col mt-4">
-            <Media list>
-                {partners}
-            </Media>
-        </div>
-    )
-}
+        return (
+            <div className="col mt-4">
+                <Media list>
+                    <Stagger in>{partners}</Stagger>
+                </Media>
+            </div>
+        )
+    }
     return (
         <div className="container">
             <div className="row">
@@ -106,18 +109,9 @@ function PartnerList(props) {
                 <div className="col-12">
                     <h3>Community Partners</h3>
                 </div>
-                {/* <div className="col mt-4">
-                    <Media list>
-                        {partners}
-                    </Media>
-                </div> */}
-                <div className="col mt-4">
-                    <Media list>
-                        <PartnerList
-                            partners={props.partners}
-                        />
-                    </Media>
-                </div>
+                <PartnerList
+                    partners={props.partners}
+                />
             </div>
         </div>
     );
